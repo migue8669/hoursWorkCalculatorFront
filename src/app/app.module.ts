@@ -4,14 +4,14 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ServiceReportComponent } from './service-report/service-report.component';
 import { HttpClientModule } from '@angular/common/http';
-import { CalculatorComponent } from './calculator/calculator.component';
+import { CalculatorComponent } from './pages/calculator/calculator.component';
+import { ReportComponent } from './pages/report/report.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ServiceReportComponent,
+    ReportComponent,
     CalculatorComponent
   ],
   imports: [

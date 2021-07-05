@@ -1,0 +1,26 @@
+{
+    "report": [
+      {
+        "idNumberReport": "1",
+        "idNumberTechnician": "1",
+
+        "dateInit": "name",
+        "dateFinish": "comment",
+        "hourInit": "cc",
+        "hourFinish": "orderStatus"
+      }
+    ],
+    "reportWeekly": [
+      {
+        "idNumberTechnician": "1",
+        "idNumberReport": "1",
+        "normalHour": "name",
+        "nocturnalhour": "comment",
+        "sundayHour": "cc",
+        "extraNormalHour": "false",
+        "extraNocturnalHour":"aa",
+        "extraSundayHour":"aa"
+
+      }
+    ]
+  }

@@ -1,0 +1,62 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="well well-sm">
+          <form
+            class="form-horizontal"
+            [formGroup]="reportForm"
+            (ngSubmit)="onSubmit(formDirective)"
+            #formDirective="ngForm"
+          >
+            <h1>Reporte de servicios</h1>
+  
+            <label>Identificación del tecnico:</label>
+            <input
+              type="text"
+              formControlName="idNumberTechnician"
+              class="form-control"
+              id="idNumberTechnician"
+            />
+  
+            <label>Identificación del servicio:</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="idNumberReport"
+              id="idNumberReport"
+            />
+            <label>Hora de inicio:</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="hourInit"
+              id="hourInit"
+            />
+            <label>Hora de finalización</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="hourFinish"
+              id="hourFinish"
+            />
+            <label>Fecha de inicio</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="dateInit"
+              id="dateInit"
+            />           <label>Fecha de finalización</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="dateFinish"
+              id="dateFinish"
+            />
+  
+            <br />
+            <button type="submit" class="btn btn-primary">Guardar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  
