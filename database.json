@@ -29,18 +29,40 @@
       "hourInit": "",
       "hourFinish": "",
       "weekNum": 27
+    },
+    {
+      "idNumberTechnician": "",
+      "id": 4,
+      "dateInit": "2021-07-06",
+      "dateFinish": "",
+      "hourInit": "06:32",
+      "hourFinish": "",
+      "weekNum": 27
     }
   ],
   "reportWeekly": [
     {
-      "idNumberTechnician": "1",
-      "idNumberReport": "1",
-      "normalHour": "name",
-      "nocturnalhour": "comment",
-      "sundayHour": "cc",
-      "extraNormalHour": "false",
-      "extraNocturnalHour": "aa",
-      "extraSundayHour": "aa"
+      "id":1,
+      "idNumberTechnician":2,
+      "name":"a",
+      "normalHour": "string",
+      "nocturnalhour": "string",
+      "sundayHour": "string",
+      "extraNormalHour": "string",
+      "extraNocturnalHour": "string",
+      "extraSundayHour": "string"
+    },
+    {
+      "id":2,
+      "idNumberTechnician":2,
+      "name":"a",
+      "normalHour": "string",
+      "nocturnalhour": "string",
+      "sundayHour": "string",
+      "extraNormalHour": "string",
+      "extraNocturnalHour": "string",
+      "extraSundayHour": "string"
     }
+    
   ]
 }

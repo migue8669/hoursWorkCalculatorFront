@@ -7,11 +7,14 @@
       [(ngModel)]="filterPost"
       name="filterPost"
     />
+    <br>
     <table>
       <thead>
         <tr>
           <th>ID&nbsp;&nbsp;</th>
           <th>Identificación del técnico&nbsp;&nbsp;</th>
+          <th>Nombre&nbsp;&nbsp;</th>
+
           <th>Hora Normal&nbsp;&nbsp;</th>
           <th>Hora Nocturna&nbsp;&nbsp;</th>
           <th>Hora Dominical&nbsp;&nbsp;;</th>
@@ -24,21 +27,24 @@
       <tbody>
       <tr
         *ngFor="
-          let product of productsObject | filter: filterPost;
+          let cal of calculatorObject | filter: filterPost;
           let i = index
         "
       >
 
-        <td>{{ product.id }}&nbsp;&nbsp; </td>
-        <td>{{ product.id }}&nbsp;&nbsp;</td>
-        <td>{{ product.description }}&nbsp;&nbsp;</td>
-        <td>{{ product.basePrice }}&nbsp;&nbsp;</td>
-        <td>{{ product.taxRate }}&nbsp;&nbsp;</td>
-        <td>{{ product.productStatus }}&nbsp;&nbsp;</td>
-        <td>{{ product.stock }}&nbsp;</td>
+        <td>{{ cal.id }}&nbsp;&nbsp; </td>
+        <td>{{ cal.idNumberTechnician }}&nbsp;&nbsp;</td>
+        <td>{{ cal.name }}&nbsp;&nbsp;</td>
+
+        <td>{{ cal.normalHour }}&nbsp;&nbsp;</td>
+        <td>{{ cal.nocturnalhour }}&nbsp;&nbsp;</td>
+        <td>{{ cal.sundayHour }}&nbsp;&nbsp;</td>
+        <td>{{ cal.extraNormalHour }}&nbsp;&nbsp;</td>
+        <td>{{ cal.extraNocturnalHour }}&nbsp;</td>
+        <td>{{ cal.extraSundayHour }}&nbsp;&nbsp;</td>
 
       <button class="btn btn-success" (click)="update(i)">Editar</button>
-      <button class="btn btn-danger" (click)="delete(product.id)">
+      <button class="btn btn-danger" (click)="delete(cal.id)">
       Eliminar
       </button>
     </tr>

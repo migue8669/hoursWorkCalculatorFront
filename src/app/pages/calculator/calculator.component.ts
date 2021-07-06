@@ -11,7 +11,7 @@ export class CalculatorComponent implements OnInit {
 
   constructor(private calculatorService: CalculatorService) {}
   updateValidate: boolean = false;
-  productsObject: any;
+  calculatorObject: any;
   contador: number = 0;
   filterPost='';
 
@@ -19,6 +19,8 @@ export class CalculatorComponent implements OnInit {
   calculatorForm= new FormGroup({
     idNumberTechnician: new FormControl(''),
     id:new FormControl(''),
+    name:new FormControl(''),
+
     normalHour: new FormControl(''),
     nocturnalhour: new FormControl(''),
     sundayHour:new FormControl(''),
@@ -33,7 +35,7 @@ export class CalculatorComponent implements OnInit {
   onSubmit(formDirective: FormGroupDirective): void {
     if ((this.updateValidate = true)) {
       console.log('updateValidate');
-      console.log(this.productsObject);
+      console.log(this.calculatorObject);
       console.log(this.calculatorForm.value);
 
       this.calculatorService
@@ -46,7 +48,7 @@ export class CalculatorComponent implements OnInit {
             console.log(error);
           }
         );
-    } else if (this.productsObject.length == 0) {
+    } else if (this.calculatorObject.length == 0) {
       this.calculatorService
         .create(this.calculatorForm.value)
         .subscribe((response) => {
@@ -54,7 +56,7 @@ export class CalculatorComponent implements OnInit {
         });
       formDirective.resetForm();
     } else {
-      for (let el of this.productsObject) {
+      for (let el of this.calculatorObject) {
         console.log(el);
         if (el.id == this.calculatorForm.value.id) {
           alert('Ya existe un empleado con esa identificacion');
@@ -79,23 +81,24 @@ export class CalculatorComponent implements OnInit {
 
   getProducts(): void {
     this.calculatorService.getAll().subscribe((data) => {
-      this.productsObject = data;
+      this.calculatorObject = data;
       this.contador = data.length;
+      console.log(this.calculatorObject)
     });
   }
   update(index: any): void {
     this.i = index;
     this.updateValidate = true;
-    this.calculatorForm = this.productsObject[index];
+    this.calculatorForm = this.calculatorObject[index];
     this.calculatorForm = new FormGroup({
-      id: new FormControl(this.productsObject[index].id),
+      id: new FormControl(this.calculatorObject[index].id),
 
-      name: new FormControl(this.productsObject[index].name),
-      description: new FormControl(this.productsObject[index].description),
-      basePrice: new FormControl(this.productsObject[index].basePrice),
-      taxRate: new FormControl(this.productsObject[index].taxRate),
-      productStatus: new FormControl(this.productsObject[index].productStatus),
-      stock: new FormControl(this.productsObject[index].stock),
+      name: new FormControl(this.calculatorObject[index].name),
+      description: new FormControl(this.calculatorObject[index].description),
+      basePrice: new FormControl(this.calculatorObject[index].basePrice),
+      taxRate: new FormControl(this.calculatorObject[index].taxRate),
+      productStatus: new FormControl(this.calculatorObject[index].productStatus),
+      stock: new FormControl(this.calculatorObject[index].stock),
     });
   }
   delete(i: any): void {
