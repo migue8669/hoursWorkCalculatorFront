@@ -1,1 +1,47 @@
-<p>calculator works!</p>
+<div class="container">
+    <h2>Calculo salario por semana</h2>
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Buscar"
+      [(ngModel)]="filterPost"
+      name="filterPost"
+    />
+    <table>
+      <thead>
+        <tr>
+          <th>ID&nbsp;&nbsp;</th>
+          <th>Identificación del técnico&nbsp;&nbsp;</th>
+          <th>Hora Normal&nbsp;&nbsp;</th>
+          <th>Hora Nocturna&nbsp;&nbsp;</th>
+          <th>Hora Dominical&nbsp;&nbsp;;</th>
+          <th>Hora Extra Normal&nbsp;&nbsp;</th>
+          <th>Hora Extra Nocturna&nbsp;&nbsp;</th>
+          <th>Hora Extra Dominical&nbsp;&nbsp;</th>
+
+        </tr>
+      </thead>
+      <tbody>
+      <tr
+        *ngFor="
+          let product of productsObject | filter: filterPost;
+          let i = index
+        "
+      >
+
+        <td>{{ product.id }}&nbsp;&nbsp; </td>
+        <td>{{ product.id }}&nbsp;&nbsp;</td>
+        <td>{{ product.description }}&nbsp;&nbsp;</td>
+        <td>{{ product.basePrice }}&nbsp;&nbsp;</td>
+        <td>{{ product.taxRate }}&nbsp;&nbsp;</td>
+        <td>{{ product.productStatus }}&nbsp;&nbsp;</td>
+        <td>{{ product.stock }}&nbsp;</td>
+
+      <button class="btn btn-success" (click)="update(i)">Editar</button>
+      <button class="btn btn-danger" (click)="delete(product.id)">
+      Eliminar
+      </button>
+    </tr>
+  </tbody>
+    </table>
+  </div>

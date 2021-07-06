@@ -7,11 +7,14 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CalculatorComponent } from './pages/calculator/calculator.component';
 import { ReportComponent } from './pages/report/report.component';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     ReportComponent,
+    FilterPipe,
+
     CalculatorComponent
   ],
   imports: [
@@ -19,6 +22,7 @@ import { ReportComponent } from './pages/report/report.component';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+  
     HttpClientModule  ],
   providers: [],
   bootstrap: [AppComponent]
