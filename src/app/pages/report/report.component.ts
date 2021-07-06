@@ -5,57 +5,59 @@ import { ReportService } from 'src/app/services/report.service';
 @Component({
   selector: 'app-report',
   templateUrl: './report.component.html',
-  styleUrls: ['./report.component.css']
+  styleUrls: ['./report.component.css'],
 })
 export class ReportComponent implements OnInit {
   reportObject: any;
+  contador: number = 0;
 
-  constructor(private reportService : ReportService) { }
+  constructor(private reportService: ReportService) {}
   reportForm = new FormGroup({
-    idNumberReport: new FormControl(''),
     idNumberTechnician: new FormControl(''),
+    id: new FormControl(''),
     dateInit: new FormControl(''),
     dateFinish: new FormControl(''),
     hourInit: new FormControl(''),
     hourFinish: new FormControl(''),
+    weekNum: new FormControl(''),
   });
   ngOnInit(): void {
     this.getReport();
-
   }
-  
-  onSubmit(formDirective:FormGroupDirective):void{
-    this.getWeekNumber()
+
+  onSubmit(formDirective: FormGroupDirective): void {
+    let dateString = formDirective.value.dateInit;
+    let newDate = new Date(dateString);
+    console.log(dateString);
+    console.log(newDate);
+
+    var result = this.getWeekNumber(newDate);
+    console.log(result);
+    this.reportForm.value.weekNum = result;
     for (let el of this.reportObject) {
       console.log(el);
-      console.log(this.reportForm.value.idNumberReport);
+      console.log(this.reportForm.value.id);
 
-      if (el.idNumberReport == this.reportForm.value.id) {
-        alert('Ya existe un empleado con esa identificacion');
-        formDirective.resetForm();
-
-        break;
-      } else {
-        console.log(this.reportForm.value);
-        this.reportService
-          .create(this.reportForm.value)
-          .subscribe((response) => {
-            console.log(response);
-          });
-      }
+      this.reportForm.value.id = this.contador++;
+      console.log(this.reportForm.value);
+      this.reportService.create(this.reportForm.value).subscribe((response) => {
+        console.log(response);
+      });
+      this.contador = 0;
+      break;
     }
   }
-  getWeekNumber () {
-    let d = new Date();  //Creamos un nuevo Date con la fecha de "this".
-    d.setHours(0, 0, 0, 0);   //Nos aseguramos de limpiar la hora.
-    d.setDate(d.getDate() + 4 - (d.getDay() || 7)); // Recorremos los días para asegurarnos de estar "dentro de la semana"
-    //Finalmente, calculamos redondeando y ajustando por la naturaleza de los números en JS:
-    console.log(d)
-  //  return Math.ceil((((d.getDate() - new Date(d.getFullYear(), 0, 1))  / 8.64e7) + 1) / 7);
-};
+  getWeekNumber(d: any) {
+    d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+    d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
+    var yearStart: any = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+    var weekNum = Math.ceil(((d - yearStart) / 86400000 + 1) / 7);
+    return weekNum;
+  }
   getReport(): void {
     this.reportService.getAll().subscribe((data) => {
       this.reportObject = data;
+      this.contador = data.id;
       console.log(data);
     });
   }

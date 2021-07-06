@@ -25,7 +25,7 @@ export class ReportService {
   }
 
   update(id:Report, data:Report): Observable<any> {
-    return this.http.put(`${this.baseUrl}/${id.idNumberReport}`, data);
+    return this.http.put(`${this.baseUrl}/${id}`, data);
   }
 
   delete(id:Report): Observable<any> {

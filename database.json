@@ -1,26 +1,46 @@
 {
-    "report": [
-      {
-        "idNumberReport": "1",
-        "idNumberTechnician": "1",
-
-        "dateInit": "name",
-        "dateFinish": "comment",
-        "hourInit": "cc",
-        "hourFinish": "orderStatus"
-      }
-    ],
-    "reportWeekly": [
-      {
-        "idNumberTechnician": "1",
-        "idNumberReport": "1",
-        "normalHour": "name",
-        "nocturnalhour": "comment",
-        "sundayHour": "cc",
-        "extraNormalHour": "false",
-        "extraNocturnalHour":"aa",
-        "extraSundayHour":"aa"
-
-      }
-    ]
-  }
+  "report": [
+    {
+      "idNumberTechnician": "",
+      "id": 1,
+      "dateInit": "2021-07-05",
+      "dateFinish": "",
+      "hourInit": "",
+      "hourFinish": "",
+      "weekNum": ""
+    },
+    {
+      "idNumberTechnician": "",
+      "id": 2,
+      "dateInit": "2021-07-06",
+      "dateFinish": "",
+      "hourInit": "",
+      "hourFinish": "",
+      "weekNum": [
+        2021,
+        27
+      ]
+    },
+    {
+      "idNumberTechnician": "",
+      "id": 3,
+      "dateInit": "2021-07-06",
+      "dateFinish": "",
+      "hourInit": "",
+      "hourFinish": "",
+      "weekNum": 27
+    }
+  ],
+  "reportWeekly": [
+    {
+      "idNumberTechnician": "1",
+      "idNumberReport": "1",
+      "normalHour": "name",
+      "nocturnalhour": "comment",
+      "sundayHour": "cc",
+      "extraNormalHour": "false",
+      "extraNocturnalHour": "aa",
+      "extraSundayHour": "aa"
+    }
+  ]
+}
