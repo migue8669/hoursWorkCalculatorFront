@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormGroupDirective } from '@angular/forms';
+import { ComponentsService } from 'src/app/services/components.service';
 import { ReportService } from 'src/app/services/report.service';
 
 @Component({
@@ -10,8 +11,11 @@ import { ReportService } from 'src/app/services/report.service';
 export class ReportComponent implements OnInit {
   reportObject: any;
   contador: number = 0;
+  msgCalculator: number=0;
 
-  constructor(private reportService: ReportService) {}
+
+
+  constructor(private reportService: ReportService, private componetService: ComponentsService) {}
   reportForm = new FormGroup({
     idNumberTechnician: new FormControl(''),
     id: new FormControl(''),
@@ -23,9 +27,51 @@ export class ReportComponent implements OnInit {
   });
   ngOnInit(): void {
     this.getReport();
-  }
+this.componetService.customMessage.subscribe(msg=>{this.msgCalculator=msg;
+  console.log(this.msgCalculator)}
+  ) 
+if(this.msgCalculator){
+  this.reportService.get(this.msgCalculator).subscribe(e=>{console.log(e)
+    console.log(e.dateInit)
+    this.reportForm = this.reportObject[e.id];
+    this.reportForm = new FormGroup({
+      id: new FormControl(e.id),
+      idNumberTechnician: new FormControl(e.idNumberTechnician),
+      dateInit: new FormControl(e.dateInit),
+      dateFinish: new FormControl(e.dateFinish),
+      hourInit: new FormControl(e.hourInit),
+      hourFinish: new FormControl(e.hourFinish),
+      weekNum: new FormControl(e.weekNum),
+    });
+
+
+  
+  });
+}
+ }
 
   onSubmit(formDirective: FormGroupDirective): void {
+    console.log(this.msgCalculator)
+     if(this.msgCalculator!=null && this.msgCalculator>0){
+      let dateString = formDirective.value.dateInit;
+      let newDate = new Date(dateString);
+      var result = this.getWeekNumber(newDate);
+      console.log(result);
+      this.reportForm.value.weekNum = result;
+
+  
+      this.reportService
+      .update(this.msgCalculator, this.reportForm.value)
+      .subscribe(
+        (response) => {
+          console.log(response);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+     } else{
+
     let dateString = formDirective.value.dateInit;
     let newDate = new Date(dateString);
     console.log(dateString);
@@ -34,8 +80,8 @@ export class ReportComponent implements OnInit {
     var result = this.getWeekNumber(newDate);
     console.log(result);
     this.reportForm.value.weekNum = result;
-    for (let el of this.reportObject) {
-      console.log(el);
+   // for (let el of this.reportObject) {
+   //   console.log(el);
       console.log(this.reportForm.value.id);
 
       this.reportForm.value.id = this.contador++;
@@ -44,9 +90,9 @@ export class ReportComponent implements OnInit {
         console.log(response);
       });
       this.contador = 0;
-      break;
-    }
-  }
+    //  break;
+  //  }
+this.reportForm.reset()  }}
   getWeekNumber(d: any) {
     d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
     d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));

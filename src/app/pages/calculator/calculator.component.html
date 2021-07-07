@@ -43,7 +43,9 @@
         <td>{{ cal.extraNocturnalHour }}&nbsp;</td>
         <td>{{ cal.extraSundayHour }}&nbsp;&nbsp;</td>
 
-      <button class="btn btn-success" (click)="update(i)">Editar</button>
+      <button class="btn btn-success" (click)="sendId(cal.id)" [routerLink]="['/servicio-tecnico']" routerLinkActive="router-link-active" >Editar
+
+      </button>
       <button class="btn btn-danger" (click)="delete(cal.id)">
       Eliminar
       </button>
@@ -51,3 +53,5 @@
   </tbody>
     </table>
   </div>
+
+  

@@ -1,50 +1,20 @@
 {
   "report": [
     {
-      "idNumberTechnician": "",
       "id": 1,
-      "dateInit": "2021-07-05",
-      "dateFinish": "",
-      "hourInit": "",
-      "hourFinish": "",
-      "weekNum": ""
-    },
-    {
-      "idNumberTechnician": "",
-      "id": 2,
+      "idNumberTechnician": "4",
       "dateInit": "2021-07-06",
-      "dateFinish": "",
-      "hourInit": "",
-      "hourFinish": "",
-      "weekNum": [
-        2021,
-        27
-      ]
-    },
-    {
-      "idNumberTechnician": "",
-      "id": 3,
-      "dateInit": "2021-07-06",
-      "dateFinish": "",
-      "hourInit": "",
-      "hourFinish": "",
-      "weekNum": 27
-    },
-    {
-      "idNumberTechnician": "",
-      "id": 4,
-      "dateInit": "2021-07-06",
-      "dateFinish": "",
-      "hourInit": "06:32",
-      "hourFinish": "",
+      "dateFinish": "2021-07-06",
+      "hourInit": "02:55",
+      "hourFinish": "03:56",
       "weekNum": 27
     }
   ],
   "reportWeekly": [
     {
-      "id":1,
-      "idNumberTechnician":2,
-      "name":"a",
+      "id": 1,
+      "idNumberTechnician": 2,
+      "name": "a",
       "normalHour": "string",
       "nocturnalhour": "string",
       "sundayHour": "string",
@@ -53,9 +23,9 @@
       "extraSundayHour": "string"
     },
     {
-      "id":2,
-      "idNumberTechnician":2,
-      "name":"a",
+      "id": 2,
+      "idNumberTechnician": 2,
+      "name": "a",
       "normalHour": "string",
       "nocturnalhour": "string",
       "sundayHour": "string",
@@ -63,6 +33,5 @@
       "extraNocturnalHour": "string",
       "extraSundayHour": "string"
     }
-    
   ]
 }

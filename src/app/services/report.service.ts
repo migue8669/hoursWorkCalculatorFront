@@ -15,7 +15,7 @@ export class ReportService {
     return this.http.get(this.baseUrl);
   }
 
-  get(id:Report): Observable<any> {
+  get(id:any): Observable<any> {
     return this.http.get(`${this.baseUrl}/${id}`);
   }
 
@@ -24,7 +24,7 @@ export class ReportService {
     return this.http.post(this.baseUrl, data);
   }
 
-  update(id:Report, data:Report): Observable<any> {
+  update(id:any, data:Report): Observable<any> {
     return this.http.put(`${this.baseUrl}/${id}`, data);
   }
 

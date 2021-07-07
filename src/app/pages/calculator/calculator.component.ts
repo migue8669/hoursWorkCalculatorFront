@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, FormGroupDirective } from '@angular/forms';
 import { CalculatorService } from 'src/app/services/calculator.service';
+import { ComponentsService } from 'src/app/services/components.service';
 
 @Component({
   selector: 'app-calculator',
@@ -9,11 +10,12 @@ import { CalculatorService } from 'src/app/services/calculator.service';
 })
 export class CalculatorComponent implements OnInit {
 
-  constructor(private calculatorService: CalculatorService) {}
+  constructor(private calculatorService: CalculatorService, private componentsService:ComponentsService) {}
   updateValidate: boolean = false;
   calculatorObject: any;
   contador: number = 0;
   filterPost='';
+
 
    i:number=0;
   calculatorForm= new FormGroup({
@@ -107,6 +109,8 @@ export class CalculatorComponent implements OnInit {
       console.log(response);
     });
   }
-
+  sendId(id:any){
+this.componentsService.changeMessage(id);
+  }
 
 }
