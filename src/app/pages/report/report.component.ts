@@ -80,8 +80,7 @@ if(this.msgCalculator){
     var result = this.getWeekNumber(newDate);
     console.log(result);
     this.reportForm.value.weekNum = result;
-   // for (let el of this.reportObject) {
-   //   console.log(el);
+ 
       console.log(this.reportForm.value.id);
 
       this.reportForm.value.id = this.contador++;
@@ -90,8 +89,7 @@ if(this.msgCalculator){
         console.log(response);
       });
       this.contador = 0;
-    //  break;
-  //  }
+  
 this.reportForm.reset()  }}
   getWeekNumber(d: any) {
     d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
