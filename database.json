@@ -26,6 +26,15 @@
       "hourInit": null,
       "hourFinish": null,
       "weekNum": 27
+    },
+    {
+      "idNumberTechnician": "3",
+      "id": 4,
+      "dateInit": "2021-07-12",
+      "dateFinish": "2021-07-12",
+      "hourInit": "12:30",
+      "hourFinish": "01:30",
+      "weekNum": 27
     }
   ],
   "reportWeekly": [

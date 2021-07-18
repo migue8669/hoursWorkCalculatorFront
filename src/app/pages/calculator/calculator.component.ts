@@ -18,10 +18,14 @@ export class CalculatorComponent implements OnInit {
 
 
    i:number=0;
+   reportForm = new FormGroup({
+    idNumberTechnician: new FormControl(''),
+
+    weekNum: new FormControl(''),
+  });
   calculatorForm= new FormGroup({
     idNumberTechnician: new FormControl(''),
     id:new FormControl(''),
-    name:new FormControl(''),
 
     normalHour: new FormControl(''),
     nocturnalhour: new FormControl(''),
@@ -29,9 +33,11 @@ export class CalculatorComponent implements OnInit {
     extraNormalHour:new FormControl(''),
     extraNocturnalHour:new FormControl(''),
     extraSundayHour:new FormControl(''),
+    numWeek:new FormControl(''),
+
   })
   ngOnInit(): void {
-    this.getProducts();
+    this.getEmployees();
   }
 
   onSubmit(formDirective: FormGroupDirective): void {
@@ -81,28 +87,14 @@ export class CalculatorComponent implements OnInit {
     }
   }
 
-  getProducts(): void {
+  getEmployees(): void {
     this.calculatorService.getAll().subscribe((data) => {
       this.calculatorObject = data;
       this.contador = data.length;
       console.log(this.calculatorObject)
     });
   }
-  update(index: any): void {
-    this.i = index;
-    this.updateValidate = true;
-    this.calculatorForm = this.calculatorObject[index];
-    this.calculatorForm = new FormGroup({
-      id: new FormControl(this.calculatorObject[index].id),
 
-      name: new FormControl(this.calculatorObject[index].name),
-      description: new FormControl(this.calculatorObject[index].description),
-      basePrice: new FormControl(this.calculatorObject[index].basePrice),
-      taxRate: new FormControl(this.calculatorObject[index].taxRate),
-      productStatus: new FormControl(this.calculatorObject[index].productStatus),
-      stock: new FormControl(this.calculatorObject[index].stock),
-    });
-  }
   delete(i: any): void {
     console.log(i);
     this.calculatorService.delete(i).subscribe((response) => {
@@ -112,5 +104,10 @@ export class CalculatorComponent implements OnInit {
   sendId(id:any){
 this.componentsService.changeMessage(id);
   }
+search(formDirective:FormGroupDirective): void{
+  this.calculatorService.get(this.reportForm.value.idNumberTechnician,this.reportForm.value.weekNum)
 
+  //this.calculatorService.get()
+
+}
 }

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Calculator } from '../model/Calculator.model';
+import { Report } from '../model/Report.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +16,9 @@ export class CalculatorService {
     return this.http.get(this.baseUrl);
   }
 
-  get(id:Calculator): Observable<any> {
-    return this.http.get(`${this.baseUrl}/${id}`);
+  get(id:Calculator,weekNum:any): Observable<any> {
+    console.log(id)
+    return this.http.get(`${this.baseUrl}/${id}`,weekNum);
   }
 
   create(data:Calculator): Observable<any> {

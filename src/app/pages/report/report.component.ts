@@ -51,7 +51,10 @@ if(this.msgCalculator){
  }
 
   onSubmit(formDirective: FormGroupDirective): void {
-    console.log(this.msgCalculator)
+    if(formDirective.value.dateFinish<formDirective.value.dateInit){
+      alert("La fecha de finalización debe ser superior a la de inicion ")
+    }else{
+
      if(this.msgCalculator!=null && this.msgCalculator>0){
       let dateString = formDirective.value.dateInit;
       let newDate = new Date(dateString);
@@ -90,7 +93,11 @@ if(this.msgCalculator){
       });
       this.contador = 0;
   
-this.reportForm.reset()  }}
+this.reportForm.reset()  
+
+}}
+
+}
   getWeekNumber(d: any) {
     d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
     d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));

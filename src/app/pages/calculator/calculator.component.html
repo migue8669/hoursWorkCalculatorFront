@@ -1,19 +1,53 @@
 <div class="container">
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="well well-sm">
+        <form
+          class="form-horizontal"
+          [formGroup]="reportForm"
+          (ngSubmit)="search(formDirective)"
+          #formDirective="ngForm"
+        >
+          <h1>Reporte de servicios</h1>
+
+          <label>Identificación del tecnico:</label>
+          <input
+            type="text"
+            formControlName="idNumberTechnician"
+            class="form-control"
+            id="idNumberTechnician"
+          />
+
+    
+          <label>Numero de la semana:</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="weekNum"
+            id="weekNum"
+          />
+      
+          <br />
+          <button class="btn btn-primary" type="submit" >
+            Buscar
+            </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
     <h2>Calculo salario por semana</h2>
-    <input
-      type="text"
-      class="form-control"
-      placeholder="Buscar"
-      [(ngModel)]="filterPost"
-      name="filterPost"
-    />
+
     <br>
     <table>
       <thead>
         <tr>
           <th>ID&nbsp;&nbsp;</th>
           <th>Identificación del técnico&nbsp;&nbsp;</th>
-          <th>Nombre&nbsp;&nbsp;</th>
 
           <th>Hora Normal&nbsp;&nbsp;</th>
           <th>Hora Nocturna&nbsp;&nbsp;</th>
@@ -21,6 +55,7 @@
           <th>Hora Extra Normal&nbsp;&nbsp;</th>
           <th>Hora Extra Nocturna&nbsp;&nbsp;</th>
           <th>Hora Extra Dominical&nbsp;&nbsp;</th>
+          <th>Numero de la semana</th>
 
         </tr>
       </thead>
@@ -34,7 +69,6 @@
 
         <td>{{ cal.id }}&nbsp;&nbsp; </td>
         <td>{{ cal.idNumberTechnician }}&nbsp;&nbsp;</td>
-        <td>{{ cal.name }}&nbsp;&nbsp;</td>
 
         <td>{{ cal.normalHour }}&nbsp;&nbsp;</td>
         <td>{{ cal.nocturnalhour }}&nbsp;&nbsp;</td>
@@ -42,11 +76,11 @@
         <td>{{ cal.extraNormalHour }}&nbsp;&nbsp;</td>
         <td>{{ cal.extraNocturnalHour }}&nbsp;</td>
         <td>{{ cal.extraSundayHour }}&nbsp;&nbsp;</td>
+        <td>{{ cal.numWeek }}&nbsp;&nbsp;</td>
 
-      <button class="btn btn-success" (click)="sendId(cal.id)" [routerLink]="['/servicio-tecnico']" routerLinkActive="router-link-active" >Editar
-
+      <button class="btn btn-success" (click)="sendId(cal.id)" [routerLink]="['/servicio-tecnico']" routerLinkActive="router-link-active" style="margin-left: 10px" >Editar
       </button>
-      <button class="btn btn-danger" (click)="delete(cal.id)">
+      <button class="btn btn-danger" (click)="delete(cal.id)" >
       Eliminar
       </button>
     </tr>
