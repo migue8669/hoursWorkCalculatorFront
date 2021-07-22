@@ -93,8 +93,7 @@ export class CalculatorComponent implements OnInit {
     this.calculatorService.getAll().subscribe((data) => {
       this.contact=[];
       this.contador = data.length;
-      console.log(data)
-
+      
       console.log(data.items.length)
 
 for (const iterator of data.items) {
