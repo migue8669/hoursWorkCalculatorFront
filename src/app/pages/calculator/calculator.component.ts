@@ -42,52 +42,7 @@ export class CalculatorComponent implements OnInit {
   ngOnInit(): void {
   }
 
- // onSubmit(formDirective: FormGroupDirective): void {
- //   if ((this.updateValidate = true)) {
-      //console.log('updateValidate');
-     // console.log(this.calculatorObject);
-     // console.log(this.calculatorForm.value);
 
-      //this.calculatorService
-        //.update(this.calculatorForm.value.id, this.calculatorForm.value)
-        //.subscribe(
-          //(response) => {
-          // console.log(response);
-         // },
-         // (error) => {
-        //    console.log(error);
-      //    }
-    //    );
-   // } else if (this.calculatorObject.length == 0) {
-   //   this.calculatorService
-       // .create(this.calculatorForm.value)
-       // .subscribe((response) => {
-        ///  console.log(response);
-      //  });
-    //  formDirective.resetForm();
-   // } else {
-     // for (let el of this.calculatorObject) {
-       // console.log(el);
-     //   if (el.id == this.calculatorForm.value.id) {
-   //       alert('Ya existe un empleado con esa identificacion');
-         /// formDirective.resetForm();
-
-       ///   break;
-    ///    } else {
-        ///  this.contador++;
-      //    this.calculatorForm.value.id = this.contador;
-        //  this.calculatorService
-       //     .create(this.calculatorForm.value)
-   //         .subscribe((response) => {
-     //         console.log(response);
-           // });
-         // formDirective.resetForm();
-
-        //  break;
-      //  }
-     // }
-   // }
- // }
 
   getEmployees(): void {
     this.calculatorService.getAll().subscribe((data) => {
