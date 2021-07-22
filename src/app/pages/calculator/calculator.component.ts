@@ -13,6 +13,9 @@ export class CalculatorComponent implements OnInit {
   constructor(private calculatorService: CalculatorService, private componentsService:ComponentsService) {}
   updateValidate: boolean = false;
   calculatorObject: any;
+  contact!: Array<Object>;
+
+
   contador: number = 0;
   filterPost='';
 
@@ -37,63 +40,88 @@ export class CalculatorComponent implements OnInit {
 
   })
   ngOnInit(): void {
-    this.getEmployees();
   }
 
-  onSubmit(formDirective: FormGroupDirective): void {
-    if ((this.updateValidate = true)) {
-      console.log('updateValidate');
-      console.log(this.calculatorObject);
-      console.log(this.calculatorForm.value);
+ // onSubmit(formDirective: FormGroupDirective): void {
+ //   if ((this.updateValidate = true)) {
+      //console.log('updateValidate');
+     // console.log(this.calculatorObject);
+     // console.log(this.calculatorForm.value);
 
-      this.calculatorService
-        .update(this.calculatorForm.value.id, this.calculatorForm.value)
-        .subscribe(
-          (response) => {
-            console.log(response);
-          },
-          (error) => {
-            console.log(error);
-          }
-        );
-    } else if (this.calculatorObject.length == 0) {
-      this.calculatorService
-        .create(this.calculatorForm.value)
-        .subscribe((response) => {
-          console.log(response);
-        });
-      formDirective.resetForm();
-    } else {
-      for (let el of this.calculatorObject) {
-        console.log(el);
-        if (el.id == this.calculatorForm.value.id) {
-          alert('Ya existe un empleado con esa identificacion');
-          formDirective.resetForm();
+      //this.calculatorService
+        //.update(this.calculatorForm.value.id, this.calculatorForm.value)
+        //.subscribe(
+          //(response) => {
+          // console.log(response);
+         // },
+         // (error) => {
+        //    console.log(error);
+      //    }
+    //    );
+   // } else if (this.calculatorObject.length == 0) {
+   //   this.calculatorService
+       // .create(this.calculatorForm.value)
+       // .subscribe((response) => {
+        ///  console.log(response);
+      //  });
+    //  formDirective.resetForm();
+   // } else {
+     // for (let el of this.calculatorObject) {
+       // console.log(el);
+     //   if (el.id == this.calculatorForm.value.id) {
+   //       alert('Ya existe un empleado con esa identificacion');
+         /// formDirective.resetForm();
 
-          break;
-        } else {
-          this.contador++;
-          this.calculatorForm.value.id = this.contador;
-          this.calculatorService
-            .create(this.calculatorForm.value)
-            .subscribe((response) => {
-              console.log(response);
-            });
-          formDirective.resetForm();
+       ///   break;
+    ///    } else {
+        ///  this.contador++;
+      //    this.calculatorForm.value.id = this.contador;
+        //  this.calculatorService
+       //     .create(this.calculatorForm.value)
+   //         .subscribe((response) => {
+     //         console.log(response);
+           // });
+         // formDirective.resetForm();
 
-          break;
-        }
-      }
-    }
-  }
+        //  break;
+      //  }
+     // }
+   // }
+ // }
 
   getEmployees(): void {
     this.calculatorService.getAll().subscribe((data) => {
-      this.calculatorObject = data;
+      this.contact=[];
       this.contador = data.length;
-      console.log(this.calculatorObject)
-    });
-  }
+      console.log(data)
+
+      console.log(data.items.length)
+
+for (const iterator of data.items) {
+  console.log(iterator)
+  this.calculatorObject = Array.of(iterator);
+  console.log(this.calculatorObject)  
+      
+ // console.log(data.items[iterator])
+if(data.items[iterator]=undefined){
+  break;
+}}
+  
+});
+
+
+}
+    //  for (let index = 0; index <= data.items.length; index++) {
+    //    console.log(index)
+    //    console.log(data.items[index])
+    //  if(data.items[index]=undefined){
+    //    break;
+    //  }
+    //   this.calculatorObject = data.items[index];
+    //   console.log(this.calculatorObject)       
+    //  }
+
+
 
   delete(i: any): void {
     console.log(i);
@@ -105,9 +133,14 @@ export class CalculatorComponent implements OnInit {
 this.componentsService.changeMessage(id);
   }
 search(formDirective:FormGroupDirective): void{
-  this.calculatorService.get(this.reportForm.value.idNumberTechnician,this.reportForm.value.weekNum)
+  this.calculatorService.create(formDirective.value);
+  this.getEmployees();
+  // this.calculatorService.get(this.reportForm.value.idNumberTechnician,this.reportForm.value.weekNum).subscribe((data)=>{
+  //   console.log(this.calculatorObject)
 
-  //this.calculatorService.get()
+  //   this.calculatorObject = data;});
 
-}
+  // //this.calculatorService.get()
+
+  }
 }

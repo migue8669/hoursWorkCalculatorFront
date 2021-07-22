@@ -9,15 +9,16 @@ import { Report } from '../model/Report.model';
 })
 export class CalculatorService {
 
-  baseUrl = 'http://localhost:3000/reportWeekly';
+  baseUrl = 'http://localhost:8080/reportWeekly';
 
   constructor(private http: HttpClient) { }
   getAll(): Observable<any> {
     return this.http.get(this.baseUrl);
+    
   }
 
   get(id:Calculator,weekNum:any): Observable<any> {
-    console.log(id)
+    console.log(id,weekNum)
     return this.http.get(`${this.baseUrl}/${id}`,weekNum);
   }
 

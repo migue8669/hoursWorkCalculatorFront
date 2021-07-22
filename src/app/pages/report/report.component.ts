@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormGroupDirective } from '@angular/forms';
 import { ComponentsService } from 'src/app/services/components.service';
 import { ReportService } from 'src/app/services/report.service';
+import { UUID } from 'angular2-uuid';
 
 @Component({
   selector: 'app-report',
@@ -9,6 +10,8 @@ import { ReportService } from 'src/app/services/report.service';
   styleUrls: ['./report.component.css'],
 })
 export class ReportComponent implements OnInit {
+  uuidValue!:string;
+
   reportObject: any;
   contador: number = 0;
   msgCalculator: number=0;
@@ -17,13 +20,13 @@ export class ReportComponent implements OnInit {
 
   constructor(private reportService: ReportService, private componetService: ComponentsService) {}
   reportForm = new FormGroup({
-    idNumberTechnician: new FormControl(''),
-    id: new FormControl(''),
+    technicianIdentity: new FormControl(''),
+    reportIdentityNumber: new FormControl(''),
     dateInit: new FormControl(''),
     dateFinish: new FormControl(''),
     hourInit: new FormControl(''),
     hourFinish: new FormControl(''),
-    weekNum: new FormControl(''),
+    numWeek: new FormControl(''),
   });
   ngOnInit(): void {
     this.getReport();
@@ -33,15 +36,15 @@ this.componetService.customMessage.subscribe(msg=>{this.msgCalculator=msg;
 if(this.msgCalculator){
   this.reportService.get(this.msgCalculator).subscribe(e=>{console.log(e)
     console.log(e.dateInit)
-    this.reportForm = this.reportObject[e.id];
+    this.reportForm = this.reportObject[e.reportIdentityNumber];
     this.reportForm = new FormGroup({
-      id: new FormControl(e.id),
-      idNumberTechnician: new FormControl(e.idNumberTechnician),
+      reportIdentityNumber: new FormControl(e.reportIdentityNumber),
+      technicianIdentity: new FormControl(e.technicianIdentity),
       dateInit: new FormControl(e.dateInit),
       dateFinish: new FormControl(e.dateFinish),
       hourInit: new FormControl(e.hourInit),
       hourFinish: new FormControl(e.hourFinish),
-      weekNum: new FormControl(e.weekNum),
+      numWeek: new FormControl(e.numWeek),
     });
 
 
@@ -51,6 +54,7 @@ if(this.msgCalculator){
  }
 
   onSubmit(formDirective: FormGroupDirective): void {
+    this.generateUUID();
     if(formDirective.value.dateFinish<formDirective.value.dateInit){
       alert("La fecha de finalización debe ser superior a la de inicion ")
     }else{
@@ -82,20 +86,20 @@ if(this.msgCalculator){
 
     var result = this.getWeekNumber(newDate);
     console.log(result);
-    this.reportForm.value.weekNum = result;
+    this.reportForm.value.numWeek = result;
  
-      console.log(this.reportForm.value.id);
+      console.log(this.reportForm.value.reportIdentityNumber);
 
-      this.reportForm.value.id = this.contador++;
+      this.reportForm.value.reportIdentityNumber = this.uuidValue;
       console.log(this.reportForm.value);
       this.reportService.create(this.reportForm.value).subscribe((response) => {
         console.log(response);
       });
-      this.contador = 0;
   
 this.reportForm.reset()  
 
 }}
+this.contador = 0;
 
 }
   getWeekNumber(d: any) {
@@ -111,5 +115,9 @@ this.reportForm.reset()
       this.contador = data.id;
       console.log(data);
     });
+  }
+  generateUUID(){
+    this.uuidValue=UUID.UUID();
+    return this.uuidValue;
   }
 }

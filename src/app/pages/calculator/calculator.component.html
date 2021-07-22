@@ -46,9 +46,7 @@
     <table>
       <thead>
         <tr>
-          <th>ID&nbsp;&nbsp;</th>
           <th>Identificación del técnico&nbsp;&nbsp;</th>
-
           <th>Hora Normal&nbsp;&nbsp;</th>
           <th>Hora Nocturna&nbsp;&nbsp;</th>
           <th>Hora Dominical&nbsp;&nbsp;</th>
@@ -62,19 +60,17 @@
       <tbody>
       <tr
         *ngFor="
-          let cal of calculatorObject | filter: filterPost;
+          let cal of calculatorObject
           let i = index
         "
       >
 
-        <td>{{ cal.id }}&nbsp;&nbsp; </td>
-        <td>{{ cal.idNumberTechnician }}&nbsp;&nbsp;</td>
-
-        <td>{{ cal.normalHour }}&nbsp;&nbsp;</td>
-        <td>{{ cal.nocturnalhour }}&nbsp;&nbsp;</td>
+        <td>{{ cal.technicianIdentity.value }}&nbsp;&nbsp;</td>
+        <td>{{ cal.hour }}&nbsp;&nbsp;</td>
+        <td>{{ cal.nightHour }}&nbsp;&nbsp;</td>
         <td>{{ cal.sundayHour }}&nbsp;&nbsp;</td>
-        <td>{{ cal.extraNormalHour }}&nbsp;&nbsp;</td>
-        <td>{{ cal.extraNocturnalHour }}&nbsp;</td>
+        <td>{{ cal.extraHour }}&nbsp;&nbsp;</td>
+        <td>{{ cal.extraNightHour }}&nbsp;</td>
         <td>{{ cal.extraSundayHour }}&nbsp;&nbsp;</td>
         <td>{{ cal.numWeek }}&nbsp;&nbsp;</td>
 

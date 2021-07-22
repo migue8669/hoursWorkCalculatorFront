@@ -8,7 +8,7 @@ import { Report } from '../model/Report.model';
 })
 export class ReportService {
 
-  baseUrl = 'http://localhost:3000/report';
+  baseUrl = 'http://localhost:8080/report';
 
   constructor(private http: HttpClient) { }
   getAll(): Observable<any> {

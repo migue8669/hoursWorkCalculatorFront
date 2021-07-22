@@ -1,12 +1,12 @@
 export class Report {
 
-    id!: string;
-    idNumberTechnician!: string;
+    reportIdentityNumber!: string;
+    technicianIdentity!: string;
     dateInit!: string;
     dateFinish!: string;
     hourInit!: string;
     hourFinish!: string;
-    weekNum!: string;
+    numWeek!: string;
 
 }
   
