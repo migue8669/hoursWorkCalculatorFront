@@ -5,8 +5,8 @@
       <div class="well well-sm">
         <form
           class="form-horizontal"
-          [formGroup]="reportForm"
-          (ngSubmit)="search(formDirective)"
+          [formGroup]="calculatorForm"
+          (ngSubmit)="getEmployees()"
           #formDirective="ngForm"
         >
           <h1>Reporte de servicios</h1>
@@ -14,9 +14,10 @@
           <label>Identificación del tecnico:</label>
           <input
             type="text"
-            formControlName="idNumberTechnician"
+            formControlName="technicianIdentity"
             class="form-control"
-            id="idNumberTechnician"
+            id="technicianIdentity"
+            (change)="deleteAll()"
           />
 
     
@@ -24,12 +25,43 @@
           <input
             type="text"
             class="form-control"
-            formControlName="weekNum"
-            id="weekNum"
+            formControlName="numWeek"
+            id="numWeek"
+            (change)="search(formDirective)"
+
           />
-      
+          <input
+          type="hidden"
+          class="form-control"
+          formControlName="nightHour"
+          id="nightHour"
+        />
+        <input
+        type="hidden"
+        class="form-control"
+        formControlName="sundayHour"
+        id="sundayHour"
+      />
+      <input
+      type="hidden"
+      class="form-control"
+      formControlName="extraHour"
+      id="extraHour"
+    />
+    <input
+    type="hidden"
+    class="form-control"
+    formControlName="extraNightHour"
+    id="extraNightHour"
+  />   <input
+  type="hidden"
+  class="form-control"
+  formControlName="extraSundayHour"
+  id="extraSundayHour"
+/>
           <br />
-          <button class="btn btn-primary" type="submit" >
+          <button class="btn btn-primary"  type="submit"   
+          >
             Buscar
             </button>
         </form>
@@ -74,9 +106,9 @@
         <td>{{ cal.extraSundayHour }}&nbsp;&nbsp;</td>
         <td>{{ cal.numWeek }}&nbsp;&nbsp;</td>
 
-      <button class="btn btn-success" (click)="sendId(cal.id)" [routerLink]="['/servicio-tecnico']" routerLinkActive="router-link-active" style="margin-left: 10px" >Editar
+      <button class="btn btn-success" (click)="sendId(cal.technicianIdentity.value)" [routerLink]="['/servicio-tecnico']" routerLinkActive="router-link-active" style="margin-left: 10px" >Editar
       </button>
-      <button class="btn btn-danger" (click)="delete(cal.id)" >
+      <button class="btn btn-danger" (click)="delete(cal.technicianIdentity.value)" >
       Eliminar
       </button>
     </tr>

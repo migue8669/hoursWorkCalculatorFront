@@ -34,18 +34,21 @@ this.componetService.customMessage.subscribe(msg=>{this.msgCalculator=msg;
   console.log(this.msgCalculator)}
   ) 
 if(this.msgCalculator){
-  this.reportService.get(this.msgCalculator).subscribe(e=>{console.log(e)
-    console.log(e.dateInit)
-    this.reportForm = this.reportObject[e.reportIdentityNumber];
-    this.reportForm = new FormGroup({
-      reportIdentityNumber: new FormControl(e.reportIdentityNumber),
-      technicianIdentity: new FormControl(e.technicianIdentity),
-      dateInit: new FormControl(e.dateInit),
-      dateFinish: new FormControl(e.dateFinish),
-      hourInit: new FormControl(e.hourInit),
-      hourFinish: new FormControl(e.hourFinish),
-      numWeek: new FormControl(e.numWeek),
-    });
+  this.reportService.get(this.msgCalculator).subscribe(e=>{console.log(e.items)
+for (const iterator of e.items) {
+  console.log(iterator.technicianIdentity)
+
+      this.reportForm = this.reportObject[iterator.technicianIdentity];
+      this.reportForm = new FormGroup({
+     //   reportIdentityNumber: new FormControl(e.reportIdentityNumber),
+     technicianIdentity: new FormControl(iterator.technicianIdentity.value),
+        dateInit: new FormControl(iterator.dateInit),
+        dateFinish: new FormControl(iterator.dateFinish),
+        hourInit: new FormControl(iterator.hourInit),
+        hourFinish: new FormControl(iterator.hourFinish),
+        numWeek: new FormControl(iterator.numWeek),
+    });}
+
 
 
   

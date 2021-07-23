@@ -23,7 +23,6 @@ export class CalculatorService {
   }
 
   create(data:Calculator): Observable<any> {
-    console.log(data)
     return this.http.post(this.baseUrl, data);
   }
 

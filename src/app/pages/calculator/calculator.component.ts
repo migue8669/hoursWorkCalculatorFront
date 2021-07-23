@@ -12,8 +12,7 @@ export class CalculatorComponent implements OnInit {
 
   constructor(private calculatorService: CalculatorService, private componentsService:ComponentsService) {}
   updateValidate: boolean = false;
-  calculatorObject: any;
-  contact!: Array<Object>;
+  calculatorObject: Array<any> = [];
 
 
   contador: number = 0;
@@ -27,55 +26,42 @@ export class CalculatorComponent implements OnInit {
     weekNum: new FormControl(''),
   });
   calculatorForm= new FormGroup({
-    idNumberTechnician: new FormControl(''),
-    id:new FormControl(''),
+    technicianIdentity: new FormControl(''),
 
-    normalHour: new FormControl(''),
-    nocturnalhour: new FormControl(''),
+    hour: new FormControl(''),
+    nightHour: new FormControl(''),
     sundayHour:new FormControl(''),
-    extraNormalHour:new FormControl(''),
-    extraNocturnalHour:new FormControl(''),
+    extraHour:new FormControl(''),
+    extraNightHour:new FormControl(''),
     extraSundayHour:new FormControl(''),
     numWeek:new FormControl(''),
 
   })
   ngOnInit(): void {
+
   }
 
 
 
   getEmployees(): void {
     this.calculatorService.getAll().subscribe((data) => {
-      this.contact=[];
       this.contador = data.length;
-      
-      console.log(data.items.length)
+      console.log(data)
 
-for (const iterator of data.items) {
-  console.log(iterator)
-  this.calculatorObject = Array.of(iterator);
-  console.log(this.calculatorObject)  
-      
- // console.log(data.items[iterator])
-if(data.items[iterator]=undefined){
-  break;
-}}
+      console.log(data.items)
+data.items.forEach((element:any) => {
+  // if(element.hour>100){
+  //   element.hour=element.hour.replace(/0/g, ':');
+  // }
+  this.calculatorObject.push(element)
+  console.log(element)
   
 });
+console.log(this.calculatorObject)
 
+});
 
 }
-    //  for (let index = 0; index <= data.items.length; index++) {
-    //    console.log(index)
-    //    console.log(data.items[index])
-    //  if(data.items[index]=undefined){
-    //    break;
-    //  }
-    //   this.calculatorObject = data.items[index];
-    //   console.log(this.calculatorObject)       
-    //  }
-
-
 
   delete(i: any): void {
     console.log(i);
@@ -84,17 +70,21 @@ if(data.items[iterator]=undefined){
     });
   }
   sendId(id:any){
+    console.log(id)
 this.componentsService.changeMessage(id);
   }
-search(formDirective:FormGroupDirective): void{
-  this.calculatorService.create(formDirective.value);
-  this.getEmployees();
-  // this.calculatorService.get(this.reportForm.value.idNumberTechnician,this.reportForm.value.weekNum).subscribe((data)=>{
-  //   console.log(this.calculatorObject)
-
-  //   this.calculatorObject = data;});
-
-  // //this.calculatorService.get()
-
+   search(formDirective:FormGroupDirective){
+  formDirective.value.hour="0";
+  formDirective.value.nightHour="0";
+  formDirective.value.sundayHour="0";
+  formDirective.value.extraHour="0";
+  formDirective.value.extraNightHour="0";
+  formDirective.value.extraSundayHour="0";
+console.log("search")
+  this.calculatorService.create(formDirective.value).subscribe();
   }
+deleteAll(){
+  console.log("deleteAll")
+  this.calculatorService.deleteAll();
+}
 }
