@@ -5,7 +5,7 @@
         <form
           class="form-horizontal"
           [formGroup]="reportForm"
-          (ngSubmit)="onSubmit(formDirective)"
+          (ngSubmit)="reportForm.valid && onSubmit(formDirective)"
           #formDirective="ngForm"
         >
           <h1>Reporte de servicios</h1>
@@ -13,27 +13,37 @@
           <label>Identificación del tecnico</label>
           <input
             type="text"
-            formControlName="technicianIdentity"
+            (ng-minlength)=8
+            (ng-required)="true"
+                        formControlName="technicianIdentity"
             class="form-control"
             id="technicianIdentity"
-          />
-
+            name="technicianIdentity"
+   
+            />
+           
           <input
             type="hidden"
+            (ng-required)="true"
+
             class="form-control"
             formControlName="reportIdentityNumber"
             id="reportIdentityNumber"
+
           />
           <label>Hora de inicio</label>
           <input
-            type="time"
+          (ng-required)="true"
+
+          type="time"
             class="form-control"
             formControlName="hourInit"
             id="hourInit"
           />
           <label>Hora de finalización</label>
           <input
-        
+          (ng-required)="true"
+
             type="time"
             class="form-control"
             formControlName="hourFinish"
@@ -41,6 +51,8 @@
           />
           <label>Fecha de inicio</label>
           <input
+          (ng-required)="true"
+
             type="date"
             data-date-format="YYYY MMMM DD"
             class="form-control"
@@ -50,6 +62,8 @@
           <label>Fecha de finalización</label>
           <input
             type="date"
+            (ng-required)="true"
+
             data-date-format="YYYY MMMM DD"
             class="form-control"
             formControlName="dateFinish"
@@ -57,7 +71,9 @@
           />
 
           <br />
-          <button type="submit" class="btn btn-primary" style="margin-left: 10px"  >Guardar</button>
+          
+          <button  type="submit" class="btn btn-primary" style="margin-left: 10px"      [disabled] = "!reportForm.valid"
+          >Guardar</button>
           <button  [routerLink]="['/calculo']" routerLinkActive="router-link-active" class="btn btn-primary mb1 bg-navy" style="margin-left: 10px" >Reporte semana</button>
 
         </form>
