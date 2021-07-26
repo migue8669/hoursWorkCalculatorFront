@@ -30,10 +30,10 @@ export class ReportComponent implements OnInit {
   reportForm = new FormGroup({
     technicianIdentity: new FormControl('', Validators.required),
     reportIdentityNumber: new FormControl(''),
-    dateInit: new FormControl(''),
-    dateFinish: new FormControl(''),
-    hourInit: new FormControl(''),
-    hourFinish: new FormControl(''),
+    dateInit: new FormControl('',Validators.required),
+    dateFinish: new FormControl('',Validators.required),
+    hourInit: new FormControl('',Validators.required),
+    hourFinish: new FormControl('',Validators.required),
     numWeek: new FormControl(''),
   });
   ngOnInit(): void {
@@ -55,11 +55,21 @@ export class ReportComponent implements OnInit {
               iterator.technicianIdentity.value || '',
               Validators.required
             ),
-            dateInit: new FormControl(iterator.dateInit),
-            dateFinish: new FormControl(iterator.dateFinish),
-            hourInit: new FormControl(iterator.hourInit),
-            hourFinish: new FormControl(iterator.hourFinish),
-            numWeek: new FormControl(iterator.numWeek),
+            dateInit: new FormControl(iterator.dateInit|| '',
+            Validators.required
+          ),
+            dateFinish: new FormControl(iterator.dateFinish|| '',
+            Validators.required
+          ),
+            hourInit: new FormControl(iterator.hourInit|| '',
+            Validators.required
+          ),
+            hourFinish: new FormControl(iterator.hourFinish|| '',
+            Validators.required
+          ),
+            numWeek: new FormControl(iterator.numWeek|| '',
+            Validators.required
+          )
           });
         }
       });
@@ -73,12 +83,16 @@ export class ReportComponent implements OnInit {
   }
 
   onSubmit(formDirective: FormGroupDirective): void {
+
+    let dateInitHelper = new Date (formDirective.value.dateInit);
+    let dateFinishHelper= new Date (formDirective.value.dateFinish);
+   
+
     this.generateUUID();
     if (
-      formDirective.value.dateFinish < formDirective.value.dateInit ||
-      formDirective.value.hourInit < formDirective.value.hourFinish
+      dateInitHelper > dateFinishHelper
     ) {
-      alert('La fecha de finalización debe ser superior a la de inicion ');
+      alert('La fecha de finalización debe ser superior a la de inicio ');
     } else {
       if (this.msgCalculator != null && this.msgCalculator > 0) {
         let dateString = formDirective.value.dateInit;
