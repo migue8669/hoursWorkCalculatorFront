@@ -1,5 +1,4 @@
 <div class="container">
-
   <div class="row">
     <div class="col-md-12">
       <div class="well well-sm">
@@ -20,7 +19,6 @@
             (change)="deleteAll()"
           />
 
-    
           <label>Numero de la semana:</label>
           <input
             type="text"
@@ -28,75 +26,64 @@
             formControlName="numWeek"
             id="numWeek"
             (change)="search(formDirective)"
-
           />
           <input
-          type="hidden"
-          class="form-control"
-          formControlName="nightHour"
-          id="nightHour"
-        />
-        <input
-        type="hidden"
-        class="form-control"
-        formControlName="sundayHour"
-        id="sundayHour"
-      />
-      <input
-      type="hidden"
-      class="form-control"
-      formControlName="extraHour"
-      id="extraHour"
-    />
-    <input
-    type="hidden"
-    class="form-control"
-    formControlName="extraNightHour"
-    id="extraNightHour"
-  />   <input
-  type="hidden"
-  class="form-control"
-  formControlName="extraSundayHour"
-  id="extraSundayHour"
-/>
+            type="hidden"
+            class="form-control"
+            formControlName="nightHour"
+            id="nightHour"
+          />
+          <input
+            type="hidden"
+            class="form-control"
+            formControlName="sundayHour"
+            id="sundayHour"
+          />
+          <input
+            type="hidden"
+            class="form-control"
+            formControlName="extraHour"
+            id="extraHour"
+          />
+          <input
+            type="hidden"
+            class="form-control"
+            formControlName="extraNightHour"
+            id="extraNightHour"
+          />
+          <input
+            type="hidden"
+            class="form-control"
+            formControlName="extraSundayHour"
+            id="extraSundayHour"
+          />
           <br />
-          <button class="btn btn-primary"  type="submit"   
-          >
-            Buscar
-            </button>
+          <button class="btn btn-primary" type="submit">Buscar</button>
         </form>
       </div>
     </div>
   </div>
 </div>
 
-
 <div class="container">
-    <h2>Calculo salario por semana</h2>
+  <h2>Calculo salario por semana</h2>
 
-    <br>
-    <table>
-      <thead>
-        <tr>
-          <th>Identificación del técnico&nbsp;&nbsp;</th>
-          <th>Hora Normal&nbsp;&nbsp;</th>
-          <th>Hora Nocturna&nbsp;&nbsp;</th>
-          <th>Hora Dominical&nbsp;&nbsp;</th>
-          <th>Hora Extra Normal&nbsp;&nbsp;</th>
-          <th>Hora Extra Nocturna&nbsp;&nbsp;</th>
-          <th>Hora Extra Dominical&nbsp;&nbsp;</th>
-          <th>Numero de la semana</th>
-
-        </tr>
-      </thead>
-      <tbody>
-      <tr
-        *ngFor="
-          let cal of calculatorObject
-          let i = index
-        "
-      >
-
+  <br />
+  <table>
+    <thead>
+      <tr>
+        <th>Identificación del técnico&nbsp;&nbsp;</th>
+        <th>Hora Normal&nbsp;&nbsp;</th>
+        <th>Hora Nocturna&nbsp;&nbsp;</th>
+        <th>Hora Dominical&nbsp;&nbsp;</th>
+        <th>Hora Extra Normal&nbsp;&nbsp;</th>
+        <th>Hora Extra Nocturna&nbsp;&nbsp;</th>
+        <th>Hora Extra Dominical&nbsp;&nbsp;</th>
+        <th>Numero de la semana</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cal of calculatorObject; let i = index">
         <td>{{ cal.technicianIdentity.value }}&nbsp;&nbsp;</td>
         <td>{{ cal.hour }}&nbsp;&nbsp;</td>
         <td>{{ cal.nightHour }}&nbsp;&nbsp;</td>
@@ -106,14 +93,22 @@
         <td>{{ cal.extraSundayHour }}&nbsp;&nbsp;</td>
         <td>{{ cal.numWeek }}&nbsp;&nbsp;</td>
 
-      <button class="btn btn-success" (click)="sendId(cal.technicianIdentity.value)" [routerLink]="['/servicio-tecnico']" routerLinkActive="router-link-active" style="margin-left: 10px" >Editar
-      </button>
-      <button class="btn btn-danger" (click)="delete(cal.technicianIdentity.value)" >
-      Eliminar
-      </button>
-    </tr>
-  </tbody>
-    </table>
-  </div>
-
-  
+        <button
+          class="btn btn-success"
+          (click)="sendId(cal.technicianIdentity.value)"
+          [routerLink]="['/servicio-tecnico']"
+          routerLinkActive="router-link-active"
+          style="margin-left: 10px"
+        >
+          Editar
+        </button>
+        <button
+          class="btn btn-danger"
+          (click)="delete(cal.technicianIdentity.value)"
+        >
+          Eliminar
+        </button>
+      </tr>
+    </tbody>
+  </table>
+</div>
