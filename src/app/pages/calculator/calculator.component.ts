@@ -6,62 +6,51 @@ import { ComponentsService } from 'src/app/services/components.service';
 @Component({
   selector: 'app-calculator',
   templateUrl: './calculator.component.html',
-  styleUrls: ['./calculator.component.css']
+  styleUrls: ['./calculator.component.css'],
 })
 export class CalculatorComponent implements OnInit {
-
-  constructor(private calculatorService: CalculatorService, private componentsService:ComponentsService) {}
+  constructor(
+    private calculatorService: CalculatorService,
+    private componentsService: ComponentsService
+  ) {}
   updateValidate: boolean = false;
   calculatorObject: Array<any> = [];
 
-
   contador: number = 0;
-  filterPost='';
+  filterPost = '';
 
-
-   i:number=0;
-   reportForm = new FormGroup({
+  i: number = 0;
+  reportForm = new FormGroup({
     idNumberTechnician: new FormControl(''),
 
     weekNum: new FormControl(''),
   });
-  calculatorForm= new FormGroup({
+  calculatorForm = new FormGroup({
     technicianIdentity: new FormControl(''),
 
     hour: new FormControl(''),
     nightHour: new FormControl(''),
-    sundayHour:new FormControl(''),
-    extraHour:new FormControl(''),
-    extraNightHour:new FormControl(''),
-    extraSundayHour:new FormControl(''),
-    numWeek:new FormControl(''),
-
-  })
-  ngOnInit(): void {
-
-  }
-
-
+    sundayHour: new FormControl(''),
+    extraHour: new FormControl(''),
+    extraNightHour: new FormControl(''),
+    extraSundayHour: new FormControl(''),
+    numWeek: new FormControl(''),
+  });
+  ngOnInit(): void {}
 
   getEmployees(): void {
     this.calculatorService.getAll().subscribe((data) => {
       this.contador = data.length;
-      console.log(data)
+      console.log(data);
 
-      console.log(data.items)
-data.items.forEach((element:any) => {
-  // if(element.hour>100){
-  //   element.hour=element.hour.replace(/0/g, ':');
-  // }
-  this.calculatorObject.push(element)
-  console.log(element)
-  
-});
-console.log(this.calculatorObject)
-
-});
-
-}
+      console.log(data.items);
+      data.items.forEach((element: any) => {
+        this.calculatorObject.push(element);
+        console.log(element);
+      });
+      console.log(this.calculatorObject);
+    });
+  }
 
   delete(i: any): void {
     console.log(i);
@@ -69,22 +58,22 @@ console.log(this.calculatorObject)
       console.log(response);
     });
   }
-  sendId(id:any){
-    console.log(id)
-this.componentsService.changeMessage(id);
+  sendId(id: any) {
+    console.log(id);
+    this.componentsService.changeMessage(id);
   }
-   search(formDirective:FormGroupDirective){
-  formDirective.value.hour="0";
-  formDirective.value.nightHour="0";
-  formDirective.value.sundayHour="0";
-  formDirective.value.extraHour="0";
-  formDirective.value.extraNightHour="0";
-  formDirective.value.extraSundayHour="0";
-console.log("search")
-  this.calculatorService.create(formDirective.value).subscribe();
+  search(formDirective: FormGroupDirective) {
+    formDirective.value.hour = '0';
+    formDirective.value.nightHour = '0';
+    formDirective.value.sundayHour = '0';
+    formDirective.value.extraHour = '0';
+    formDirective.value.extraNightHour = '0';
+    formDirective.value.extraSundayHour = '0';
+    console.log('search');
+    this.calculatorService.create(formDirective.value).subscribe();
   }
-deleteAll(){
-  console.log("deleteAll")
-  this.calculatorService.deleteAll();
-}
+  deleteAll() {
+    console.log('deleteAll');
+    this.calculatorService.deleteAll();
+  }
 }

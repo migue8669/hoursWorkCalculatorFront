@@ -30,10 +30,10 @@ export class ReportComponent implements OnInit {
   reportForm = new FormGroup({
     technicianIdentity: new FormControl('', Validators.required),
     reportIdentityNumber: new FormControl(''),
-    dateInit: new FormControl('',Validators.required),
-    dateFinish: new FormControl('',Validators.required),
-    hourInit: new FormControl('',Validators.required),
-    hourFinish: new FormControl('',Validators.required),
+    dateInit: new FormControl('', Validators.required),
+    dateFinish: new FormControl('', Validators.required),
+    hourInit: new FormControl('', Validators.required),
+    hourFinish: new FormControl('', Validators.required),
     numWeek: new FormControl(''),
   });
   ngOnInit(): void {
@@ -55,21 +55,26 @@ export class ReportComponent implements OnInit {
               iterator.technicianIdentity.value || '',
               Validators.required
             ),
-            dateInit: new FormControl(iterator.dateInit|| '',
-            Validators.required
-          ),
-            dateFinish: new FormControl(iterator.dateFinish|| '',
-            Validators.required
-          ),
-            hourInit: new FormControl(iterator.hourInit|| '',
-            Validators.required
-          ),
-            hourFinish: new FormControl(iterator.hourFinish|| '',
-            Validators.required
-          ),
-            numWeek: new FormControl(iterator.numWeek|| '',
-            Validators.required
-          )
+            dateInit: new FormControl(
+              iterator.dateInit || '',
+              Validators.required
+            ),
+            dateFinish: new FormControl(
+              iterator.dateFinish || '',
+              Validators.required
+            ),
+            hourInit: new FormControl(
+              iterator.hourInit || '',
+              Validators.required
+            ),
+            hourFinish: new FormControl(
+              iterator.hourFinish || '',
+              Validators.required
+            ),
+            numWeek: new FormControl(
+              iterator.numWeek || '',
+              Validators.required
+            ),
           });
         }
       });
@@ -83,15 +88,11 @@ export class ReportComponent implements OnInit {
   }
 
   onSubmit(formDirective: FormGroupDirective): void {
-
-    let dateInitHelper = new Date (formDirective.value.dateInit);
-    let dateFinishHelper= new Date (formDirective.value.dateFinish);
-   
+    let dateInitHelper = new Date(formDirective.value.dateInit);
+    let dateFinishHelper = new Date(formDirective.value.dateFinish);
 
     this.generateUUID();
-    if (
-      dateInitHelper > dateFinishHelper
-    ) {
+    if (dateInitHelper > dateFinishHelper) {
       alert('La fecha de finalización debe ser superior a la de inicio ');
     } else {
       if (this.msgCalculator != null && this.msgCalculator > 0) {
