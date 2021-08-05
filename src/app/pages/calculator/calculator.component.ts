@@ -39,6 +39,9 @@ export class CalculatorComponent implements OnInit {
   ngOnInit(): void {}
 
   getEmployees(): void {
+
+//    this.calculatorService.deleteAll();
+
     this.calculatorService.getAll().subscribe((data) => {
       this.contador = data.length;
       console.log(data);

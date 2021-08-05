@@ -72,7 +72,8 @@
           >
             Guardar
           </button>
-          <button
+          <button 
+            (click)="deleteAll()"
             [routerLink]="['/calculo']"
             routerLinkActive="router-link-active"
             class="btn btn-primary mb1 bg-navy"

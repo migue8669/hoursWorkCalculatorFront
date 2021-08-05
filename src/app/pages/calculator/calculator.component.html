@@ -8,15 +8,14 @@
           (ngSubmit)="getEmployees()"
           #formDirective="ngForm"
         >
-          <h1>Reporte de servicios</h1>
-
+          <h1>Busqueda de servicios por tecnico</h1>
           <label>Identificación del tecnico:</label>
           <input
             type="text"
             formControlName="technicianIdentity"
             class="form-control"
+            (change)=deleteAll()
             id="technicianIdentity"
-            (change)="deleteAll()"
           />
 
           <label>Numero de la semana:</label>
@@ -27,6 +26,7 @@
             id="numWeek"
             (change)="search(formDirective)"
           />
+    
           <input
             type="hidden"
             class="form-control"
@@ -92,10 +92,12 @@
         <td>{{ cal.extraNightHour }}&nbsp;</td>
         <td>{{ cal.extraSundayHour }}&nbsp;&nbsp;</td>
         <td>{{ cal.numWeek }}&nbsp;&nbsp;</td>
-
+<!-- 
         <button
           class="btn btn-success"
           (click)="sendId(cal.technicianIdentity.value)"
+          (change)="deleteAll()"
+
           [routerLink]="['/servicio-tecnico']"
           routerLinkActive="router-link-active"
           style="margin-left: 10px"
@@ -107,7 +109,7 @@
           (click)="delete(cal.technicianIdentity.value)"
         >
           Eliminar
-        </button>
+        </button> -->
       </tr>
     </tbody>
   </table>

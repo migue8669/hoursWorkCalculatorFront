@@ -10,225 +10,24 @@
       "weekNum": 27
     },
     {
-      "idNumberTechnician": "1",
-      "id": 2,
-      "dateInit": "",
-      "dateFinish": "",
-      "hourInit": "14:30",
-      "hourFinish": "05:30",
-      "weekNum": null
+      "technicianIdentity": "1111111111111113332",
+      "reportIdentityNumber": "0390901e-29e1-21a9-16bf-02809fc674a8",
+      "dateInit": "2021-08-04",
+      "dateFinish": "2021-08-11",
+      "hourInit": "19:57",
+      "hourFinish": "20:58",
+      "numWeek": 32,
+      "id": 2
     },
     {
-      "idNumberTechnician": "5",
-      "id": 3,
-      "dateInit": "2021-07-09",
-      "dateFinish": "2021-07-08",
-      "hourInit": null,
-      "hourFinish": null,
-      "weekNum": 27
-    },
-    {
-      "idNumberTechnician": "3",
-      "id": 4,
-      "dateInit": "2021-07-12",
-      "dateFinish": "2021-07-12",
-      "hourInit": "12:30",
-      "hourFinish": "01:30",
-      "weekNum": 27
-    },
-    {
-      "technicianIdentity": "112",
-      "reportIdentityNumber": "c0ac14f9-dec1-2e1c-90aa-de48a262d7ff",
-      "dateInit": "",
-      "dateFinish": "",
-      "hourInit": "",
-      "hourFinish": "",
-      "numWeek": null,
-      "id": 5
-    },
-    {
-      "technicianIdentity": "112",
-      "reportIdentityNumber": "cb3c302d-dc15-41e3-95d4-d33cb874a528",
-      "dateInit": null,
-      "dateFinish": null,
-      "hourInit": null,
-      "hourFinish": null,
-      "numWeek": 1,
-      "id": 6
-    },
-    {
-      "technicianIdentity": "",
-      "reportIdentityNumber": "cd01b7d2-4efa-b1ef-51a9-564227ff36e6",
-      "dateInit": "",
-      "dateFinish": "",
-      "hourInit": "",
-      "hourFinish": "",
-      "numWeek": null,
-      "id": 7
-    },
-    {
-      "technicianIdentity": "",
-      "reportIdentityNumber": "6c67e3ed-63d9-5dd5-1ca0-c36e84644994",
-      "dateInit": "",
-      "dateFinish": "",
-      "hourInit": "",
-      "hourFinish": "",
-      "numWeek": null,
-      "id": 8
-    },
-    {
-      "technicianIdentity": "",
-      "reportIdentityNumber": "68e340e4-c411-7c2f-c2d0-d418fa7cb8c9",
-      "dateInit": "",
-      "dateFinish": "",
-      "hourInit": "",
-      "hourFinish": "",
-      "numWeek": null,
-      "id": 9
-    },
-    {
-      "technicianIdentity": null,
-      "reportIdentityNumber": "bd0a635d-de65-f4ad-50e2-95c0d06886fb",
-      "dateInit": null,
-      "dateFinish": null,
-      "hourInit": null,
-      "hourFinish": null,
-      "numWeek": 1,
-      "id": 10
-    },
-    {
-      "technicianIdentity": "",
-      "reportIdentityNumber": "a1e44329-8cca-e9e6-bfc4-0c4af5dce632",
-      "dateInit": "",
-      "dateFinish": "",
-      "hourInit": "",
-      "hourFinish": "",
-      "numWeek": null,
-      "id": 11
-    },
-    {
-      "technicianIdentity": "",
-      "reportIdentityNumber": "4b596b6b-ea3a-3a78-cf56-85599379567f",
-      "dateInit": "",
-      "dateFinish": "",
-      "hourInit": "",
-      "hourFinish": "",
-      "numWeek": null,
-      "id": 12
-    },
-    {
-      "technicianIdentity": "",
-      "reportIdentityNumber": "b2d40626-1caf-6b42-f7f5-92b13cb7d58c",
-      "dateInit": "",
-      "dateFinish": "",
-      "hourInit": "",
-      "hourFinish": "",
-      "numWeek": null,
-      "id": 13
-    },
-    {
-      "technicianIdentity": "",
-      "reportIdentityNumber": "a23c8b96-13ea-a548-fa6b-240312179ffa",
-      "dateInit": "",
-      "dateFinish": "",
-      "hourInit": "",
-      "hourFinish": "",
-      "numWeek": null,
-      "id": 14
-    },
-    {
-      "technicianIdentity": "",
-      "reportIdentityNumber": "89fd5c66-fa8f-6de3-a2f0-9f267c192d82",
-      "dateInit": "",
-      "dateFinish": "",
-      "hourInit": "",
-      "hourFinish": "",
-      "numWeek": null,
-      "id": 15
-    },
-    {
-      "technicianIdentity": "",
-      "reportIdentityNumber": "b0f0b8e4-3fe2-093d-76c5-63b73d97feb1",
-      "dateInit": "",
-      "dateFinish": "",
-      "hourInit": "",
-      "hourFinish": "",
-      "numWeek": null,
-      "id": 16
-    },
-    {
-      "technicianIdentity": "",
-      "reportIdentityNumber": "c513d795-81e5-2c80-9045-6f1e5e77716a",
-      "dateInit": "",
-      "dateFinish": "",
-      "hourInit": "",
-      "hourFinish": "",
-      "numWeek": null,
-      "id": 17
-    },
-    {
-      "technicianIdentity": "",
-      "reportIdentityNumber": "e098ac35-ff1f-2b9a-b6ba-6c6c5b5764b9",
-      "dateInit": "",
-      "dateFinish": "",
-      "hourInit": "",
-      "hourFinish": "",
-      "numWeek": null,
-      "id": 18
-    },
-    {
-      "technicianIdentity": "",
-      "reportIdentityNumber": "7e64b023-a59f-77be-af97-795edbc7f67c",
-      "dateInit": "",
-      "dateFinish": "",
-      "hourInit": "",
-      "hourFinish": "",
-      "numWeek": null,
-      "id": 19
-    },
-    {
-      "technicianIdentity": null,
-      "reportIdentityNumber": "8c15fe7f-3cd2-4a46-7a9c-edd63e82bd9b",
-      "dateInit": null,
-      "dateFinish": null,
-      "hourInit": null,
-      "hourFinish": null,
-      "numWeek": 1,
-      "id": 20
-    },
-    {
-      "technicianIdentity": "",
-      "reportIdentityNumber": "ee57664e-f1a4-5985-9b56-c691be74f599",
-      "dateInit": "",
-      "dateFinish": "",
-      "hourInit": "",
-      "hourFinish": "",
-      "numWeek": null,
-      "id": 21
-    }
-  ],
-  "reportWeekly": [
-    {
-      "id": 1,
-      "idNumberTechnician": 2,
-      "name": "a",
-      "normalHour": "string",
-      "nocturnalhour": "string",
-      "sundayHour": "string",
-      "extraNormalHour": "string",
-      "extraNocturnalHour": "string",
-      "extraSundayHour": "string"
-    },
-    {
-      "id": 2,
-      "idNumberTechnician": 2,
-      "name": "a",
-      "normalHour": "string",
-      "nocturnalhour": "string",
-      "sundayHour": "string",
-      "extraNormalHour": "string",
-      "extraNocturnalHour": "string",
-      "extraSundayHour": "string"
+      "technicianIdentity": "1111111111111113332",
+      "reportIdentityNumber": "0390901e-29e1-21a9-16bf-02809fc674a8",
+      "dateInit": "2021-08-04",
+      "dateFinish": "2021-08-11",
+      "hourInit": "19:57",
+      "hourFinish": "20:58",
+      "numWeek": 31,
+      "id": 3
     }
   ]
 }
